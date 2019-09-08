@@ -1,0 +1,38 @@
+<nav class="nav-extended" *ngIf="isAuthenticated()">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">VITECHD</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <li ><a (click)="singout()">Logout</a></li>
+      </ul>
+    </div>
+    <div class="nav-content" *ngIf="isUserAdmin">
+      <ul mat-tab-nav-bar class="tabs tabs-transparent">
+          <li class="tab"><a mat-tab-link
+            [routerLink]="home"
+            routerLinkActive #rla="routerLinkActive"
+            [active]="rla.isActive">
+            Prestamos 
+         </a></li>
+         <li class="tab"><a mat-tab-link
+          [routerLink]="admin"
+          routerLinkActive #rla="routerLinkActive"
+          [active]="rla.isActive">
+          Administrar prestamos
+       </a></li>
+         <li class="tab"><a mat-tab-link
+          [routerLink]="admin"
+          routerLinkActive #rla="routerLinkActive"
+          [active]="rla.isActive">
+          Administrar Usuarios
+       </a></li>
+          
+          
+      </ul>  
+    </div>
+    
+  </nav>
+  <ul class="sidenav" id="mobile-demo">
+      <li><a routerLink="/login">Logout</a></li>
+    </ul>        
+    

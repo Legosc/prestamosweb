@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+      <h2 class="header">Login</h2>
+      <div class="card">
+          <div class="card-content">
+              <!-- <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                          <div class="input-field">
+                              <input id="Email" formControlName="Email" type="email" class="validate" [ngClass]="{ 'invalid': submitted && f.Email.errors }" >
+                              <label for="email_inline">Email</label>
+                              <span class="helper-text" data-error="Correo Invalido" *ngIf="!submitted && f.Email.errors"></span>
+                              <span class="helper-text" data-error="Usuario requerido" *ngIf="submitted && f.Email.errors"></span>
+                              
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-field">
+                          <input id="Password" formControlName="Password" type="Password" class="validate" [ngClass]="{ 'invalid': submitted && f.Password.errors }" >
+                          <label for="Password">Password</label>
+                          <span class="helper-text" data-error="Contraseña requerida" *ngIf="submitted && f.Password.errors"></span>
+                      </div>
+                      </div>
+                      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+            </form> -->
+          </div>
+          <div class="card sticky-action">
+            <div class="card-action">
+                <button class="btn waves-effect waves-light" type="submit" (click)="onSubmit()" name="action">Login</button>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
