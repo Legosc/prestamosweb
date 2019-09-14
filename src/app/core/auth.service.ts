@@ -27,12 +27,12 @@ export class AuthService {
           return of(null);
         }
       })
-    )
+    );
     this.user$.subscribe(data =>{
       console.log(data)
-    })
+    });
 
-    this.authState = this.firebaseAuth.authState
+    this.authState = this.firebaseAuth.authState;
     
   }
   get authenticated(): boolean {
@@ -41,7 +41,7 @@ export class AuthService {
     
   }
   get CurrentUser() : any {
-    console.log(this.user$)
+    console.log(this.user$);
     return this.currentUser;
   }
   
