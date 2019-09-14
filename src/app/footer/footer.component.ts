@@ -11,7 +11,7 @@ import { take, map, tap } from 'rxjs/operators';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  valid: Boolean;
+  valid: boolean;
 
   constructor(private authService: AuthService, 
     private router: Router) { }

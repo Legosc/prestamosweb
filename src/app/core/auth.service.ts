@@ -45,13 +45,13 @@ export class AuthService {
     return this.currentUser
   }
   
-  async googleLogin() {
+ googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
-    return await this.oAuthLogin(provider);
+    return this.oAuthLogin(provider);
   }
 
-  private async oAuthLogin(provider) {
-    return await this.firebaseAuth.auth.signInWithPopup(provider).then(value => {
+  private oAuthLogin(provider) {
+    return this.firebaseAuth.auth.signInWithPopup(provider).then(value => {
       console.log('Nice, it worked!');
 
        this.updateUserData(value.user)
@@ -107,8 +107,8 @@ export class AuthService {
       });
   }
 
-  async login(email: string, password: string) {
-    return await this.firebaseAuth
+   login(email: string, password: string) {
+    return  this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
@@ -119,8 +119,8 @@ export class AuthService {
       });
   }
 
-  async signOut() {
-    await this.firebaseAuth
+   signOut() {
+     this.firebaseAuth
       .auth
       .signOut();
       localStorage.clear();

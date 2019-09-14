@@ -11,13 +11,13 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean {
 
     if (this.authService.authenticated) { 
-    console.log('access!')
+    console.log('access!');
       
       return true; 
     }
-    console.log('access denied!')
+    console.log('access denied!');
     this.router.navigate(['/login']);
-    return false
+    return false;
   }
 
 }

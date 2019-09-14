@@ -9,24 +9,24 @@ export class PrestamoService {
   pagos :any = {};
   constructor(private db: AngularFirestore) { }
   admin_prestamos() {
-    var PrestCollection : any={};
+    let PrestCollection : any={};
    PrestCollection= this.db.collection('prestamos').valueChanges();
     return PrestCollection
   }
   all_prestamos(id) {
-    var PrestCollection : any={};
+    let PrestCollection : any={};
     PrestCollection = this.db.collection(`prestamos`,ref => ref.where('user_id', '==', id)).valueChanges();
     return PrestCollection
   }
   calculaCuota(monto, interes, plazo): number {
-    var resultado =(monto * (((interes / 100) * Math.pow((1 + (interes / 100)), plazo)) / (Math.pow((1 + (interes / 100)), plazo) - 1)));
+    let resultado =(monto * (((interes / 100) * Math.pow((1 + (interes / 100)), plazo)) / (Math.pow((1 + (interes / 100)), plazo) - 1)));
     if (resultado < 1){
       resultado = 0
     }
     return resultado;
   }
   realiza_pago(prestamo,monto) {
-        var saldo_ante = prestamo.saldo;
+        let saldo_ante = prestamo.saldo;
         prestamo.saldo = prestamo.saldo - (monto -(prestamo.saldo * (prestamo.interes/100)));
         if(prestamo.saldo < 1){
           prestamo.saldo = 0;
