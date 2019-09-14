@@ -11,7 +11,7 @@ import { PrestamoService } from '../core/prestamo.service';
 
 @Injectable()
 export class AuthService {
-  auth = firebase.auth()
+  auth = firebase.auth();
   user$: any;
   currentUser : any ;
   authState: any = null;
@@ -42,11 +42,11 @@ export class AuthService {
   }
   get CurrentUser() : any {
     console.log(this.user$)
-    return this.currentUser
+    return this.currentUser;
   }
   
  googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider()
+    const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
 
@@ -54,7 +54,7 @@ export class AuthService {
     return this.firebaseAuth.auth.signInWithPopup(provider).then(value => {
       console.log('Nice, it worked!');
 
-       this.updateUserData(value.user)
+       this.updateUserData(value.user);
     })
       .catch(err => {
         console.log('Something went wrong:', err.message);
@@ -66,7 +66,7 @@ export class AuthService {
     
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<any> = this.db.doc(`users/${user.uid}`);
-     var localUser : User; 
+     let localUser : User; 
      userRef.valueChanges().subscribe(data=>{
        localUser = data as User;
     
@@ -79,7 +79,7 @@ export class AuthService {
             subscriber: true
           }
         }
-        return userRef.set(updateUser, { merge: true })
+        return userRef.set(updateUser, { merge: true });
      
      });
     

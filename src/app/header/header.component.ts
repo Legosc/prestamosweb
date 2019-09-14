@@ -9,7 +9,6 @@ import { AuthService } from '../core/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isUserAdmin: boolean;
-  @Output() public sidenavToggle = new EventEmitter();
   constructor(private authService: AuthService,
     private router: Router) {
     this.isAdmin()
