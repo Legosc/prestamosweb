@@ -9,14 +9,14 @@ export class PrestamoService {
   pagos :any = {};
   constructor(private db: AngularFirestore) { }
   admin_prestamos() {
-    let PrestCollection : any={};
-   PrestCollection= this.db.collection('prestamos').valueChanges();
-    return PrestCollection
+    let prestCollection : any={};
+   prestCollection= this.db.collection('prestamos').valueChanges();
+    return prestCollection
   }
   all_prestamos(id) {
-    let PrestCollection : any={};
-    PrestCollection = this.db.collection(`prestamos`,ref => ref.where('user_id', '==', id)).valueChanges();
-    return PrestCollection
+    let prestCollection : any={};
+    prestCollection = this.db.collection(`prestamos`,ref => ref.where('user_id', '==', id)).valueChanges();
+    return prestCollection
   }
   calculaCuota(monto, interes, plazo): number {
     let resultado =(monto * (((interes / 100) * Math.pow((1 + (interes / 100)), plazo)) / (Math.pow((1 + (interes / 100)), plazo) - 1)));
@@ -26,17 +26,17 @@ export class PrestamoService {
     return resultado;
   }
   realiza_pago(prestamo,monto) {
-        let saldo_ante = prestamo.saldo;
+        let saldoAnte = prestamo.saldo;
         prestamo.saldo = prestamo.saldo - (monto -(prestamo.saldo * (prestamo.interes/100)));
         if(prestamo.saldo < 1){
           prestamo.saldo = 0;
-          monto = saldo_ante;
+          monto = saldoAnte;
         }
         
         if (prestamo.pagos === ''){
           prestamo.cuota = this.calculaCuota(prestamo.saldo,prestamo.interes,(prestamo.plazo));
           prestamo.pagos.push({pago : monto,
-            sal_ante: saldo_ante,
+            sal_ante: saldoAnte,
             intereses : (prestamo.saldo * (prestamo.interes/100)),
             aporte : monto -(prestamo.saldo * (prestamo.interes/100)),
             saldo : prestamo.saldo,
