@@ -9,25 +9,25 @@ import { AuthService } from '../core/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  UserPrestamo: any =[];
+  userPrestamo: any =[];
   Pagos:any =[];
   //public UserPagos: Observable<Pagos>;
   authuser: any ={};
 
-  constructor(private PrestamoService: PrestamoService, private auth: AuthService) {
+  constructor(private prestamoService: PrestamoService, private auth: AuthService) {
     this.auth.user$.subscribe(user =>{
       this.authuser = user;
-      //this.UserPrestamo= 
-      this.UserPrestamo = []
+      //this.userPrestamo= 
+      this.userPrestamo = [];
       if (this.authuser){
         if ( this.authuser.roles.admin){
-          this.PrestamoService.admin_prestamos().subscribe(d =>{
-            return this.UserPrestamo = d
-          })
+          this.prestamoService.admin_prestamos().subscribe(d =>{
+            return this.userPrestamo = d;
+          });
         }
         else {
-          this.PrestamoService.all_prestamos(this.authuser.uid).subscribe(d =>{
-            return this.UserPrestamo = d
+          this.prestamoService.all_prestamos(this.authuser.uid).subscribe(d =>{
+            return this.userPrestamo = d;
           })
         }
       }
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     
   }
   pagar(prestamo){
-    this.PrestamoService.realiza_pago(prestamo,prestamo.cuota);
+    this.prestamoService.realiza_pago(prestamo,prestamo.cuota);
   }
 
 }

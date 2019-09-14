@@ -26,7 +26,7 @@ export class PrestamoService {
     return resultado;
   }
   realiza_pago(prestamo,monto) {
-        let saldoAnte = prestamo.saldo;
+        const saldoAnte = prestamo.saldo;
         prestamo.saldo = prestamo.saldo - (monto -(prestamo.saldo * (prestamo.interes/100)));
         if(prestamo.saldo < 1){
           prestamo.saldo = 0;
