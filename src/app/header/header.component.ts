@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   isUserAdmin: boolean;
   constructor(private authService: AuthService,
     private router: Router) {
-    this.isAdmin()
+    this.isAdmin();
 
   }
 
@@ -23,11 +23,11 @@ export class HeaderComponent implements OnInit {
     return this.authService.authenticated;      
   }
   isAdmin() {
-    console.log('user')
-    console.log(this.authService.CurrentUser)
+    console.log('user');
+    console.log(this.authService.CurrentUser);
   }
   singout() {
-    this.authService.signOut()
+    this.authService.signOut();
     this.router.navigate(['/login']);
   }
 }
