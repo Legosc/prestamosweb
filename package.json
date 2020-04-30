@@ -27,7 +27,7 @@
     "angularfire2": "^5.1.3",
     "core-js": "^2.5.4",
     "firebase": "^5.11.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "karma": "^4.1.0",
     "material": "^0.3.5",
     "materialize-css": "^1.0.0-rc.2",
